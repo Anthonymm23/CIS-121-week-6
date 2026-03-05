@@ -1,42 +1,44 @@
 #include <iostream>
 using namespace std;
+int main()
+{
+	int quantity;
+	char status;
+	double price, extended, tax, total;
 
-int main() {
-    char job;
-    double hours, rate, gross;
+	cout << "Enter quantity: ";
+	cin >> quantity;
+	cout << "Enter status (A, B, C, D): ";
+	cin >> status;
 
-    cout << "Enter job code (L, J, A): ";
-    cin >> job;
+	if (quantity > 10000) {
+		if (status == 'A' || status == 'a')
+				price = 10;
+			else if (status == 'B' || status == 'b')
+				price = 12;
+			else 
+				price = 30;
+			}
+	else if (quantity >= 5000) {
+		if (status == 'C' || status == 'c')
+			price = 20;
+		else if (status == 'D' || status == 'd')
+			price = 22;
+		else 
+			price = 30;
+			}
+	else {
+		price = 30;
+	}
 
-    cout << "Enter hours worked: ";
-    cin >> hours;
+	extended = quantity * price;
+	tax = extended * 0.07;
+	total = extended + tax;
 
-    if (job == 'L' || job == 'l') {
-        if (hours > 40)
-            rate = 50.00;
-        else
-            rate = 40.00;
-    }
-    else if (job == 'J' || job == 'j') {
-        if (hours > 60)
-            rate = 100.00;
-        else
-            rate = 75.00;
-    }
-    else if (job == 'A' || job == 'a') {
-        if (hours > 40)
-            rate = 25.00;
-        else
-            rate = 20.00;
-    }
-    else {
-        cout << "Invalid job code.";
-        return 0;
-    }
+	cout << "Unit Price: $" << price << endl;
+	cout << "Extended Price: $" << extended << endl;
+	cout << "Tax: $" << tax << endl;
+	cout << "Total: $" << total << endl;
 
-    gross = hours * rate;
-
-    cout << "Gross Pay: $" << gross << endl;
-
-    return 0;
-}
+	return 0;
+	}
